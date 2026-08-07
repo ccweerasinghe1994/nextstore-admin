@@ -1,16 +1,14 @@
-import Link from 'next/link'
-import type { ReactNode } from 'react'
+import Link from "next/link";
+import type { ReactNode } from "react";
 
 type DashboardLayoutProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-export default function DashboardLayout({
-  children,
-}: DashboardLayoutProps) {
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="min-h-screen">
-      <header className="border-b p-4">
+      <header className="border-border border-b bg-surface p-4">
         <nav className="flex gap-4">
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/dashboard/products">Products</Link>
@@ -21,5 +19,5 @@ export default function DashboardLayout({
 
       <main className="p-8">{children}</main>
     </div>
-  )
+  );
 }
