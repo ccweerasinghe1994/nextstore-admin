@@ -56,3 +56,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+:root[data-theme-preference="system"] .theme-option[data-theme-option="system"],
+:root[data-theme-preference="light"] .theme-option[data-theme-option="light"],
+:root[data-theme-preference="dark"] .theme-option[data-theme-option="dark"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}

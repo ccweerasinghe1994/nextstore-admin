@@ -2,14 +2,21 @@
   const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
+  let preference = "system";
 
   try {
-    const storedTheme = window.localStorage.getItem("nextstore-theme:v1");
-    document.documentElement.dataset.theme =
-      storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : systemTheme;
-  } catch {
-    document.documentElement.dataset.theme = systemTheme;
-  }
+    const storedPreference = window.localStorage.getItem("nextstore-theme:v1");
+
+    if (
+      storedPreference === "system" ||
+      storedPreference === "light" ||
+      storedPreference === "dark"
+    ) {
+      preference = storedPreference;
+    }
+  } catch {}
+
+  document.documentElement.dataset.themePreference = preference;
+  document.documentElement.dataset.theme =
+    preference === "system" ? systemTheme : preference;
 })();

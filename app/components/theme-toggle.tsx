@@ -35,6 +35,7 @@ function resolveTheme(preference: ThemePreference): "light" | "dark" {
 }
 
 function applyTheme(preference: ThemePreference) {
+  document.documentElement.dataset.themePreference = preference;
   document.documentElement.dataset.theme = resolveTheme(preference);
 }
 
@@ -107,11 +108,8 @@ export function ThemeToggle() {
                 key={option}
                 type="button"
                 aria-pressed={isSelected}
-                className={
-                  isSelected
-                    ? "rounded-lg bg-accent px-3 py-2 text-sm font-medium text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                    : "rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-surface-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                }
+                className="theme-option rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-surface-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                data-theme-option={option}
                 onClick={() => selectTheme(option)}
               >
                 {THEME_LABELS[option]}
